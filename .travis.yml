@@ -14,15 +14,26 @@ env:
 jobs:
   include:
   - stage: build
+#    if: type = pull_request OR branch = master
     script:
     - ". build.sh; run"
 
 deploy:
-  provider: releases
-  api_key:
-    secure: RRreMcvDnaqpNGJwhktPso7kuyxTpRO6xZC5I0aob9W06o1IESZZN8JaiUiP2Ya3j58h97uIL+iYPIeXhNNn2LdpH6/b2I6Ei73htkpluTFF54Xws+8cjz5tkAgzgskjrFI80xOpa323+bdlLMz3ndnrxyUMUphWOAshq13L1rCWeCor48BUC0h09GSkaPLFlfSEu/AWLl3HLmzHcePJs1G7UQmxgR+zdXoVu5FBRcGHeDyiQrI9k06+rS8ue8hcbvgTr9/9D9z/3ESA4nYoyeDbXckwWjw4hdggTA5dTrTk3+l0AZNjD0oLa/NDdJQ/Jaal92woW0LHgoysM3V3rVSh9OXva7peUgkOH51geA/rFURK3i2/QY46+cKWB8VqUMjU/GQlB8B6h/sU8aAW/P2twVQ8CsjSyhln1CtGCS2OLPY9y7/sW3ygoisyyTjW7lTGC5uJ55AKBNtZrvsIyeGgaAWOOjrSFKRvAxxr+xUNcwKVnG0qb/Qj80Ch1WtwUSaJCJLF5jGSnu+9mYUWb72AZ/MQ4lkKZAmOeO5d86VN2URxWREckVlCOATWZ7Ehjf++55SXB4HBqaWXRq7P64SFcJ65JlTByCzNjCLEXbHXA6Na52vhGi/yWRgt6A6325Owx9lCOlr3lw24/yYPPyzHGBOcbGk5ERNjRu9bh1M=
-  skip_cleanup: true
-  file_glob: true
-  file: "${TRAVIS_BUILD_DIR}/.build_artifacts/*.zip"
-  on:
-    tags: true
+  - provider: releases
+    api_key:
+      secure: RRreMcvDnaqpNGJwhktPso7kuyxTpRO6xZC5I0aob9W06o1IESZZN8JaiUiP2Ya3j58h97uIL+iYPIeXhNNn2LdpH6/b2I6Ei73htkpluTFF54Xws+8cjz5tkAgzgskjrFI80xOpa323+bdlLMz3ndnrxyUMUphWOAshq13L1rCWeCor48BUC0h09GSkaPLFlfSEu/AWLl3HLmzHcePJs1G7UQmxgR+zdXoVu5FBRcGHeDyiQrI9k06+rS8ue8hcbvgTr9/9D9z/3ESA4nYoyeDbXckwWjw4hdggTA5dTrTk3+l0AZNjD0oLa/NDdJQ/Jaal92woW0LHgoysM3V3rVSh9OXva7peUgkOH51geA/rFURK3i2/QY46+cKWB8VqUMjU/GQlB8B6h/sU8aAW/P2twVQ8CsjSyhln1CtGCS2OLPY9y7/sW3ygoisyyTjW7lTGC5uJ55AKBNtZrvsIyeGgaAWOOjrSFKRvAxxr+xUNcwKVnG0qb/Qj80Ch1WtwUSaJCJLF5jGSnu+9mYUWb72AZ/MQ4lkKZAmOeO5d86VN2URxWREckVlCOATWZ7Ehjf++55SXB4HBqaWXRq7P64SFcJ65JlTByCzNjCLEXbHXA6Na52vhGi/yWRgt6A6325Owx9lCOlr3lw24/yYPPyzHGBOcbGk5ERNjRu9bh1M=
+    skip_cleanup: true
+    file_glob: true
+    file: "${TRAVIS_BUILD_DIR}/.build_artifacts/*.zip"
+    draft: true
+    on:
+      branch: master
+
+  - provider: releases
+    api_key:
+      secure: RRreMcvDnaqpNGJwhktPso7kuyxTpRO6xZC5I0aob9W06o1IESZZN8JaiUiP2Ya3j58h97uIL+iYPIeXhNNn2LdpH6/b2I6Ei73htkpluTFF54Xws+8cjz5tkAgzgskjrFI80xOpa323+bdlLMz3ndnrxyUMUphWOAshq13L1rCWeCor48BUC0h09GSkaPLFlfSEu/AWLl3HLmzHcePJs1G7UQmxgR+zdXoVu5FBRcGHeDyiQrI9k06+rS8ue8hcbvgTr9/9D9z/3ESA4nYoyeDbXckwWjw4hdggTA5dTrTk3+l0AZNjD0oLa/NDdJQ/Jaal92woW0LHgoysM3V3rVSh9OXva7peUgkOH51geA/rFURK3i2/QY46+cKWB8VqUMjU/GQlB8B6h/sU8aAW/P2twVQ8CsjSyhln1CtGCS2OLPY9y7/sW3ygoisyyTjW7lTGC5uJ55AKBNtZrvsIyeGgaAWOOjrSFKRvAxxr+xUNcwKVnG0qb/Qj80Ch1WtwUSaJCJLF5jGSnu+9mYUWb72AZ/MQ4lkKZAmOeO5d86VN2URxWREckVlCOATWZ7Ehjf++55SXB4HBqaWXRq7P64SFcJ65JlTByCzNjCLEXbHXA6Na52vhGi/yWRgt6A6325Owx9lCOlr3lw24/yYPPyzHGBOcbGk5ERNjRu9bh1M=
+    skip_cleanup: true
+    file_glob: true
+    file: "${TRAVIS_BUILD_DIR}/.build_artifacts/*.zip"
+    on:
+      tags: true

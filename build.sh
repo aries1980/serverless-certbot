@@ -32,6 +32,7 @@ build_for_aws() {
     -w /workspace \
     python:${aws_python_version}-slim \
       bash -c -e -x " \
+        chown -R root /root/.cache && \
         pip install virtualenv && \
         virtualenv venv && \
         source venv/bin/activate && \
