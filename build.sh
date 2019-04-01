@@ -9,7 +9,7 @@ set -xe
 setenv() {
   AWS_PYTHON_VERSION="${AWS_PYTHON_VERSION:-"3.7"}"
   CERTBOT_VERSION="${CERTBOT_VERSION:-"0.32.0"}"
-  WORKSPACE=$(pwd)
+  WORKSPACE="${TRAVIS_BUILD_DIR:-$(pwd)}"
 
   [ ! -d .python_cache ] && mkdir .python_cache
   [ ! -d .build_artifacts ] && mkdir .build_artifacts
@@ -49,7 +49,6 @@ build_for_aws() {
 ##
 cleanup() {
   rm -rf venv
-  rm -rf build_artifacts
 }
 
 ##
