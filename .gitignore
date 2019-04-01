@@ -1,0 +1,17 @@
+# Editors
+# =======
+.*code
+.idea
+*.todo
+*.history
+
+# Build artifacts
+# ===============
+certbot_build
+certbot_build_aws
+build_artifacts
+
+# Misc files
+# ==========
+*.DS_Store
+
