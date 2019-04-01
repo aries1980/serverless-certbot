@@ -18,7 +18,7 @@ setenv() {
 }
 
 ##
-# Downloads a given version of Certbot
+# Downloads a given version of Certbot with the DNS plugins
 ##
 build_for_aws() {
   local certbot_filename="certbot-awslambda-${1}.zip"
@@ -32,10 +32,24 @@ build_for_aws() {
     -w /workspace \
     python:${aws_python_version}-slim \
       bash -c -e -x " \
+        chown -R root /root/.cache && \
         pip install virtualenv && \
         virtualenv venv && \
         source venv/bin/activate && \
-        pip install certbot==${certbot_version} certbot-dns-route53==${certbot_version}
+        pip install \
+          certbot==${certbot_version} \
+          certbot-dns-cloudflare==${certbot_version} \
+          certbot-dns-cloudxns==${certbot_version} \
+          certbot-dns-digitalocean==${certbot_version} \
+          certbot-dns-dnsimple==${certbot_version} \
+          certbot-dns-dnsmadeeasy==${certbot_version} \
+          certbot-dns-google==${certbot_version} \
+          certbot-dns-linode==${certbot_version} \
+          certbot-dns-luadns==${certbot_version} \
+          certbot-dns-nsone==${certbot_version} \
+          certbot-dns-ovh==${certbot_version} \
+          certbot-dns-rfc2136==${certbot_version} \
+          certbot-dns-route53==${certbot_version}
       "
 
   sudo chown -R $UID venv
