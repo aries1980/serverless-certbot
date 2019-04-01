@@ -14,7 +14,7 @@ env:
 jobs:
   include:
   - stage: build
-#    if: type = pull_request OR branch = master
+    if: type = pull_request OR branch = master
     script:
     - ". build.sh; run"
 
