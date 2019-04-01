@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/aries1980/serverless-certbot.svg?branch=master)](https://travis-ci.org/aries1980/serverless-certbot)
+
 ## The Problem
 
 > Run Certbot on the first of every month and upload the certificates to a cloud stora,ge.
