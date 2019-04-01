@@ -2,7 +2,7 @@
 
 ## The Problem
 
-> Run Certbot on the first of every month and upload the certificates to a cloud stora,ge.
+> Run Certbot on the first of every month and upload the certificates to a cloud storage.
 
 SSL/TLS certificates is a must for any external communication. Not just because the served traffic is a secret, but also
 to hide the endpoint that is serving. Also it is a must for SEO, HTTP/2, but it is a good practice in general.
@@ -31,4 +31,3 @@ The process is inspired by [Deploying EFF's Certbot in AWS Lambda](https://arkad
 
 - Copy the certbot-lambda-[certbot_version].zip into AWS S3.  (More cloud provider support is planned.  Feel free to create a PR!)
 - Terraform the serverless application.
-
